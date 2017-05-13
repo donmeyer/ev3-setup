@@ -37,6 +37,7 @@ if [ -f "/tmp/id_rsa.pub" ]
 then
 	mkdir ~/.ssh
 	cat /tmp/id_rsa.pub >> ~/.ssh/authorized_keys
+	rm /tmp/id_rsa.pub
 else
 	echo "*** Unable to setup the RSA key, was not sent over from the Mac?"
 fi
@@ -44,19 +45,32 @@ fi
 
 # Install the FTP server
 #
-echo "Installing Python FTP library..."
 
-wget https://pypi.python.org/packages/source/p/pyftpdlib/pyftpdlib-1.5.0.tar.gz
-gunzip pyftpdlib-*
-tar -xf pyftpdlib*.tar
-sudo mv pyftpdlib-1.5.0/pyftpdlib /usr/lib/python2.7
-rm -rf pyftpdlib*
+if [ -d /usr/lib/python2.7/pyftpdlib ]
+then
+	echo "Python FTP lib already installed"
+else
+	echo "Installing Python FTP library..."
 
-echo "Setting up FTP server..."
+	wget https://pypi.python.org/packages/source/p/pyftpdlib/pyftpdlib-1.5.0.tar.gz
+	gunzip pyftpdlib-*
+	tar -xf pyftpdlib*.tar
+	sudo mv pyftpdlib-1.5.0/pyftpdlib /usr/lib/python2.7
+	rm -rf pyftpdlib*
+fi
 
-sudo mv ftpserver /etc/init.d/ftpserver
-sudo chmod +x /etc/init.d/ftpserver
-sudo update-rc.d ftpserver defaults
+
+
+if [ -f /etc/init.d/ftpserver ]
+then
+	echo "FTP server already installed"
+else
+	echo "Setting up FTP server..."
+	sudo mv ftpserver /etc/init.d/ftpserver
+	sudo chmod +x /etc/init.d/ftpserver
+	sudo update-rc.d ftpserver defaults
+fi
+
 
 
 # Make the default Python scripts executable

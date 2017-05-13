@@ -26,9 +26,13 @@ echo "Copying the setup stuff to the EV3..."
 scp Setup/* robot@ev3dev.local:~/
 
 
-echo "Copying the robot scripts to the EV3..."
-
-scp Scripts/* robot@ev3dev.local:~/
+if [ -d Scripts ]
+then
+	echo "Copying the robot scripts to the EV3..."
+	scp Scripts/* robot@ev3dev.local:~/
+else
+	echo "Scripts folder missing, not copied."
+fi
 
 
 echo "All done!"
