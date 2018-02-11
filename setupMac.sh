@@ -2,7 +2,10 @@
 
 # Setup script for the ev3dev system. This script runs on the Mac from my EV3 folder.
 #
-# This script presumes you have already generated an SSH public key.
+# This script presumes you have already generated an SSH public key on the Mac.
+#
+#  This is intended to be run on a freshly-created and booted ev3dev SD card image.
+#
 
 
 # Copy the RSA key to the EV3
