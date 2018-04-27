@@ -80,5 +80,27 @@ echo "Making default Python scripts executable..."
 chmod +x *.py
 
 
+echo "Updating the package lists"
+
+sudo apt-get update
+
+
+echo "Installing build essentials so we can compile C and C++"
+
+sudo apt-get -y install build-essential
+
+
+echo "Installing Lua 5.2 with dev libraries"
+
+sudo apt-get -y install lua5.2
+sudo apt-get -y install liblua5.2-dev
+
+
+echo "Building the elua app"
+
+cd ~/lua/src
+make
+
+cd ..
 
 echo "Setup complete"
