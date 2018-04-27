@@ -32,7 +32,7 @@ scp Setup/* robot@ev3dev.local:~/
 if [ -d Scripts ]
 then
 	echo "Copying the robot scripts to the EV3..."
-	scp Scripts/* robot@ev3dev.local:~/
+	scp -r Scripts/* robot@ev3dev.local:~/
 else
 	echo "Scripts folder missing, not copied."
 fi
