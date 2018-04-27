@@ -19,9 +19,9 @@
 
 # Install the Ruby gem that lets us remote edit with TextMate
 #
-echo "Installing rmate (this may take a while)..."
+#echo "Installing rmate (this may take a while)..."
 
-sudo gem install rmate
+#sudo gem install rmate
 
 
 
