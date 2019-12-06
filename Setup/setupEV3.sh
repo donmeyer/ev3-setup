@@ -68,6 +68,7 @@ else
 	echo "Setting up FTP server..."
 	sudo mv ftpserver /etc/init.d/ftpserver
 	sudo chmod +x /etc/init.d/ftpserver
+	sudo chown root:root /etc/init.d/ftpserver
 	sudo update-rc.d ftpserver defaults
 fi
 
